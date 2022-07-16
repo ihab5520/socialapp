@@ -31,6 +31,6 @@ const projectName = "social app";
 
 app.locals.appTitle = `${projectName} created with IronLauncher`;
 
-app.listen(3000, (error) => {
+app.listen(process.env.PORT, (error) => {
   console.log("server is running");
 });
