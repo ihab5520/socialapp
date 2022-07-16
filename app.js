@@ -7,7 +7,6 @@ hbs.registerHelper("ifEquals", function (arg1, arg2, options) {
 const app = express();
 
 require("dotenv/config");
-console.log(process.env);
 require("./config")(app);
 require("./config/session.config")(app);
 
