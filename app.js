@@ -12,18 +12,6 @@ require("./config/session.config")(app);
 
 // ℹ️ Connects to the database
 require("./db");
-// const mongoose = require('mongoose');
-// mongoose.connect("mongodb+srv://Ihab:Eslam552005@cluster0.xnwlp51.mongodb.net/?retryWrites=true&w=majority")
-//   .then( result => {
-//     app.listen(3000);
-//   })
-//   .catch( err => {
-//     console.log(err);
-//   });
-
-
-
-//https://git.heroku.com/sheltered-sea-03869.git
 //https://social-app-ihab.herokuapp.com/ | https://git.heroku.com/social-app-ihab.git
 
 const cookieParser = require("cookie-parser");
