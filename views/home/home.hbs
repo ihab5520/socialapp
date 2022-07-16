@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Ironhack</title>
+
+  <link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+<body>
+  <!-- nav -->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="index.html">Ironhack</a>
+      </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/logout">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- ./nav -->
+
+  <!-- main -->
+  <main class="container">
+    <div class="row">
+      <div class="col-md-3">
+     
+
+     
+      <div class="col-md-6">
+          {{#if errorMessage}}
+             <h5 class='error' style="color: red">{{errorMessage}}</h5>
+          {{/if}}
+
+           
+
+
+        <!-- post form -->
+        <form method="post" action="/create-post">
+          <div class="input-group">
+            <input class="form-control" type="text" name="content" placeholder="Make a post...">
+            <span class="input-group-btn">
+              <button class="btn btn-success" type="submit">Post</button>
+            </span>
+          </div>
+        </form><hr>
+        <!-- ./post form -->
+
+        <!-- feed -->
+        <div>
+          <!-- post -->
+           {{#if posts}}
+           {{#each posts}}
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <p>{{description}}</p>
+            </div>
+            <div class="panel-footer">
+              <span>posted  {{{dateFormat createdAt "dddd, DD MMMM YYYY"}}} by {{owner.username}}</span> 
+               {{#ifEquals ../user.username owner.username}}
+              <span class="pull-right"><a class="text-danger" href="/delete-post/{{_id}}">[delete]</a></span>
+             {{/ifEquals}}
+            </div>
+          </div>
+          {{/each}}
+           {{/if}}
+          <!-- ./post -->
+        </div>
+        <!-- ./feed -->
+      </div>
+      <div class="col-md-3">
+      <!-- add friend -->
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h4>add friend</h4>
+            <ul>
+              {{#if users}}
+           {{#each users}}
+              <li>
+                <a>{{username}}</a> 
+                <a href="/add-friend/{{_id}}">[add]</a>
+              </li>
+                {{/each}}
+           {{/if}}
+            </ul>
+          </div>
+        </div>
+        <!-- ./add friend -->
+
+        <!-- friends -->
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h4>friends</h4>
+            <ul>
+                   {{#if friends}}
+           {{#each friends}}
+              <li>
+                <a>{{fromUser.username}}</a> 
+                <a class="text-danger" href="/unfriend/{{_id}}">[unfriend]</a>
+              </li>
+                 {{/each}}
+           {{/if}}
+            </ul>
+          </div>
+        </div>
+        <!-- ./friends -->
+      </div>
+    </div>
+  </main>
+  <!-- ./main -->
+
+  <script type="text/javascript" src="/js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="/js/script.js"></script>
+</body>
+</html>
