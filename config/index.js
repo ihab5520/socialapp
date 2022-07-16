@@ -4,6 +4,13 @@ const express = require("express");
 // ℹ️ Needed when we deal with cookies (we will when dealing with authentication)
 const cookieParser = require("cookie-parser");
 
+// ℹ️ Responsible for the messages you see in the terminal as requests are coming in
+// https://www.npmjs.com/package/morgan
+const logger = require("morgan");
+
+// ℹ️ Serves a custom favicon on each request
+const favicon = require("serve-favicon");
+
 // ℹ️ global package used to `normalize` paths amongst different operating systems
 // https://www.npmjs.com/package/path
 const path = require("path");
@@ -20,4 +27,8 @@ module.exports = (app) => {
   app.set("view engine", "hbs");
   // Handles access to the public folder
   app.use(express.static(path.join(__dirname, "..", "public")));
+  // Handles access to the favicon
+  app.use(
+    favicon(path.join(__dirname, "..", "public", "images", "favicon.ico"))
+  );
 };
